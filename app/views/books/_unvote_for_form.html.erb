@@ -1,0 +1,7 @@
+<%= form_for current_user.votes.find_by_voted_id(@book), :html => { :method =>  :delete} do |f| %>
+	<div class="field">
+		<%= f.hidden_field :voted_id %>
+	</div>
+	<div class="actions"><%= f.submit "Undo your vote" %></div>
+	<% end %>
+

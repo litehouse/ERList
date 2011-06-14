@@ -1,0 +1,9 @@
+<%= form_for @book.votes.build( :voted_id => @book.id) do |f| %>
+	<div class="field">
+		<%= f.hidden_field :voted_id %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Vote for this book "%>
+	</div>
+<% end %>
+

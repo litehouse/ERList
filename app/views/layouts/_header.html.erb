@@ -1,0 +1,25 @@
+<header>
+	<%= link_to logo, root_path %> 
+	
+	<nav class="round">
+		<ul>
+			<li><%= link_to "Home",  root_path %></li>
+			<li><%= link_to "The Essential List", books_path %></li>
+			<% if signed_in? %>
+			<li><%= link_to "Readers",  users_path %></li>
+			<li><%= link_to "Sign out",  signout_path, :method => :delete %></li>
+			<% else %>
+			<li><%= link_to "Sign in",  signin_path %></li>
+			<% end %>
+			<li><%= link_to "Help",  help_path %></li>
+		</ul>
+	</nav>
+	<% if signed_in? %>
+	  <div>
+		Welcome <%= link_to current_user.name, current_user %>
+		<% if current_user.admin? %>
+		 /admin
+		<% end %>
+	  </div>
+	<% end %>
+</header>

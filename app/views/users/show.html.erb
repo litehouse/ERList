@@ -1,0 +1,36 @@
+<table class="profile" summary="Profile information">
+	
+	<tr>
+		<td class="main">
+			<h1>
+			  <%= gravatar_for @user %>
+			  <%= @user.name %>
+			</h1>
+			<%= render 'follow_form' if signed_in? %>
+			<% unless @user.microposts.empty? %>
+			  <table class="microposts" summary="User microposts">
+				<%= render @microposts %>
+			  </table>
+			  <%= will_paginate @microposts %>
+			<% end %>
+		</td>
+		<td class="sidebar round">
+			<strong>Name</strong>  <%= @user.name %>
+			<% unless !current_user?(@user)%><br/>
+			<%= link_to "Update your profile", edit_user_path(current_user) %><br/>
+			<% end %>
+			<br/>
+			<strong>Microposts </strong> <%= @user.microposts.count %>
+			<%= render 'shared/stats' %>
+			<strong>Books added </strong> <%= @user.books.count %>
+			<strong>Comments </strong> <%= @user.comments.count %><br/>
+			<br/>
+			<% @books = @user.books %>
+			<% unless @books.empty? %>
+			  <% @books.each do |book| %>
+				<%= "image" %>
+			  <% end %>
+			 <% end %>
+		</td>
+	</tr>
+</table>

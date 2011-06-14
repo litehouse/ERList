@@ -1,0 +1,6 @@
+<% unless @book_feed_items.empty? %>
+	<table class="comments" summary="Book comments">
+		<%= render :partial => 'shared/book_feed_item', :collection => @book_feed_items %>
+	</table>
+	<%= will_paginate @book_feed_items %>
+<% end %>

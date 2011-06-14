@@ -1,0 +1,22 @@
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+	<tr>
+		<td class="main">
+			<h1 class="micropost">Share a thought</h1>
+			<%= render 'shared/micropost_form' %>
+			<%= render 'shared/feed' %>
+		</td>
+		<td class="sidebar round">
+			<%= render 'shared/user_info' %>
+			<%= render 'shared/stats' %>
+		</td>
+	</tr>
+   </table>
+<% else %> 
+  <h1>The Great War's Essential Booklist</h1>
+  <p>
+  	This is the home page for the Great War's Essential Booklist. Find a select list of books on the First World War, and read the comments of others. Sign up and join the online community to add your own discoveries, comment on the books you read, and vote for your favorites. 
+  </p>
+  <%= link_to front_page_picture, root_path %> 
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

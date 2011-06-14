@@ -1,0 +1,13 @@
+<h1>The Essential List</h1>
+
+<%= will_paginate @books %>
+
+<table class="books">
+	<%= render @books %>
+</table>
+
+<%= will_paginate  @books %>
+
+<% if signed_in? %>
+  <%= link_to "Add a new book!", new_book_path, :class => "add_book_button round" %>
+<% end %>

@@ -1,0 +1,34 @@
+<table class="book" summary="Book details">
+	<tr class="book_list">
+		
+		<td class="main">
+			<h1>
+			  <%= @book.title %>
+			</h1>
+			<ul>
+				<li><strong>Author</strong>  <%= @book.author %></li>
+				<li><strong>Publisher</strong>  <%= @book.publisher %></li>
+				<li><strong>ISBN</strong>  <%= @book.isbn %></li>
+			</ul>
+			<% if signed_in? %>
+			  <% if ( current_user.admin? ) or (current_user.id == @book.creator_id ) %>
+			    <%= link_to "Edit book details", edit_book_path(@book) %><br/>
+			    <strong>Added by: </strong> <%= link_to @book.user.name, @book.user %>
+			    <%= render 'shared/comment_form' %>
+			  <% end %>
+			<% end %>
+			<%= render 'shared/book_feed' %>
+		</td>
+		
+		<td class="sidebar round">
+			<strong>Total votes: </strong> <%= @book.votes_from.count %><br/>
+			<%= image_tag(@book.image_url, :class => 'list_image', :size => "150x150"  )%><br/>
+			<% if signed_in? %>
+			  <%= render 'vote_form' %>
+			<% end %>
+		</td>
+		
+	</tr>
+</table>
+
+

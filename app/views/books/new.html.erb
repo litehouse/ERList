@@ -1,0 +1,28 @@
+<h1>Add a new book</h1>
+
+<%= form_for(@book) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+	<%= f.label :title %><br/>
+	<%= f.text_field :title %>
+  </div>
+  <div class="field">
+	<%= f.label :author %><br/>
+	<%= f.text_field :author %>
+  </div>
+  <div class="field">
+	<%= f.label :publisher %><br/>
+	<%= f.text_field :publisher %>
+  </div>
+  <div class="field">
+	<%= f.label :isbn %><br/>
+	<%= f.text_field :isbn %>
+  </div>
+  <div class="field">
+	<%= f.label :image_url %><br/>
+	<%= f.text_field :image_url %>
+  </div>
+  <div class="actions">
+	<%= f.submit "Add" %>
+  </div>
+<% end %>

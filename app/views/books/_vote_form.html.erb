@@ -1,0 +1,11 @@
+<% unless current_user?(@user) %>
+	<div id="vote_form">
+		<% if current_user.votes_for?(@book) %>
+			<%= render 'unvote_for_form' %>
+		<% else %>
+			<%= render 'vote_for_form' %>
+		<% end %>
+	</div>
+<% end %>
+
+
