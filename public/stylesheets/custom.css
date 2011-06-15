@@ -284,3 +284,10 @@ table.comments tr td.comment span.timestamp {
     color: #666;
 }
 
+/*facebook plugins */
+
+.facebook-bar {
+    position:absolute;
+    right:15px;
+    top:100px;
+}

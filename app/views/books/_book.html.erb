@@ -2,12 +2,10 @@
 	<td class="book_image">
 	  <%= link_to image_tag(book.image_url, :class => 'list_image', :size => '50x50'), book %>
 	</td>
-	<td class="book_votes">
-		<%= book.votes_from.count %>
-	</td>
 	<td class="book">
 	    <span class="title"><%= link_to book.title, book %></span>
-		<span class="author"><%= book.author %></span>
+		<span class="author">, <%= book.author %></span>
+		<br/>
 	  <% if signed_in? %>
 	    <% if ( current_user.admin? ) or (current_user.id == book.creator_id ) %>
 	      <td>
@@ -15,6 +13,9 @@
 		  </td>
 		<% end %>
 	  <% end %>
+	<td class="book_votes">
+		<%= book.votes_from.count %> votes
+	</td>
 </tr>
 
 
