@@ -1,6 +1,8 @@
 ERList::Application.routes.draw do
     
     
+    resources :supports, :only => [:new, :create]
+
     get "comments/create"
     
     get "comments/destroy"
@@ -50,7 +52,7 @@ ERList::Application.routes.draw do
     match '/signup', :to => 'users#new'
     match '/list', :to => 'books#index'
     
-    match '/contact',   :to => 'pages#contact'
+    match '/contact',   :to => 'supports#new'
     match '/about',     :to => 'pages#about'
     match '/help',      :to => 'pages#help'
     

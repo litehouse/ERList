@@ -16,6 +16,17 @@ ERList::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+    
+    config.action_mailer.smtp_settings = {
+        :address        => "smtp.gmail.com",
+        :port           => 587,
+        :domain         => "litehouse.be",
+        :authentication => "plain",
+        :user_name      => "litehouse.dev@gmail.com",
+        :password       => "thunder123",
+        :enable_starttls_auto => true
+    }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
