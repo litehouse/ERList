@@ -28,6 +28,10 @@ section h1 {
 	font-size: 200%;
 }
 
+section h2 {
+	font-size: 100%;
+    color: red;
+}
 /* Links */
 
 a {
