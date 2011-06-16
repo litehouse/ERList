@@ -1,6 +1,24 @@
 ERList::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  # ActionMailer
+    
+    config.action_mailer.raise_delivery_errors = true
+    
+    config.action_mailer.delivery_method = :smtp
+    
+    config.action_mailer.smtp_settings = {
+        :address        => "smtp.gmail.com",
+        :port           => 587,
+        :domain         => "litehouse.be",
+        :authentication => "plain",
+        :user_name      => "litehouse.dev@gmail.com",
+        :password       => "thunder123",
+        :enable_starttls_auto => true
+    }
+    
+
+    
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
