@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
           sign_in @user
-          flash[:success] = "Welcome to the Sample App!"
+          flash[:success] = "Welcome to the Great War's Essential Reading List!"
           redirect_to user_path(@user)
       else
           @title = "Sign up"
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     
       def correct_user
           @user = User.find(params[:id])
-          flash[:notice] = "User activity on this site is logged. Please read the site guidelines." unless current_user?(@user)
+          flash[:notice] = "Unauthorized Access !! User activity on this site is logged." unless current_user?(@user)
           redirect_to(root_path) unless current_user?(@user)
       end
     
