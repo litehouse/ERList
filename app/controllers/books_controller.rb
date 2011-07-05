@@ -20,37 +20,46 @@ class BooksController < ApplicationController
       end
   end
      
+    
   def create
       @book = Book.new(params[:book])
       @book.creator_id = current_user.id
+      @book.title[0] = @book.title[0].capitalize
+      @book.author[0] = @book.author[0].capitalize
       if @book.save
-          flash[:success] = "Book added!"
-          redirect_to books_path(@book)
+        flash[:success] = "Book added"
+        redirect_to books_path(@book)
       else
-          redirect_to books_path
+        flash[:notice] = "save failed"
+        @title = "Add a Book"
+        render 'new' 
       end
   end
     
   def destroy
       Book.find(params[:id]).destroy
-      flash[:success] = "Book destroyed"
+      flash[:success] = "Book deleted"
       redirect_to books_path
   end
 
   def edit
       @book = Book.find(params[:id])
+      @book.title[0] = @book.title[0].capitalize
+      @book.author[0] = @book.author[0].capitalize
       @title = "Edit Book"
   end
     
   def update 
       @book = Book.find(params[:id])
       if @book.update_attributes(params[:book])
-          flash[:success] = "Book updated"
-          redirect_to @book
+        flash[:success] = "Book updated"
+        redirect_to @book
       else
-          @title = "Edit book"
-          render 'edit'
+        flash[:notice] = "Update failed"
+        @title = "Edit book"
+        render 'edit'
       end
   end
       
 end
+

@@ -22,15 +22,18 @@
 			<br/>
 			<strong>Microposts </strong> <%= @user.microposts.count %>
 			<%= render 'shared/stats' %>
-			<strong>Books added </strong> <%= @user.books.count %>
-			<strong>Comments </strong> <%= @user.comments.count %><br/>
-			<br/>
 			<% @books = @user.books %>
+			<strong>Books added </strong> <%= @user.books.count %><br/>
 			<% unless @books.empty? %>
 			  <% @books.each do |book| %>
-				<%= "image" %>
+				<%= link_to image_tag(book.image_url, :class => 'list_image', :size => '30x30'), book %>
 			  <% end %>
-			 <% end %>
+			<% end %>
+			<br/>
+			<br/>
+			<strong>Comments made </strong> <%= @user.comments.count %><br/>
+			<br/>
+			
 		</td>
 	</tr>
 </table>

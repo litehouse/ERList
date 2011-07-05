@@ -2,10 +2,17 @@
 	<td class="user">
 	 <span class="grav"><%= gravatar_for user, :size => 30 %></span>
 	 <span class="user-name"><%= link_to user.name, user %></span>
-	 <span><% if current_user.admin? %>
-	 | <%= link_to( "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}") %>
-	<% end %>
+	 <span class="user-admin">
+	   <% if user.admin?%>
+	      **Admin** 
+	   <% end %>
 	 </span>
+	</td>
+	<td class="user-votes"><%= user.votes.count %> votes </td>
+	<td class="user-comments"><%= user.comments.count %> comments </td>
+	<td class="user-delete"><% if current_user.admin? %>
+	  <%= link_to( "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}") %>
+	  <% end %>
 	</td>
 </tr>
 	

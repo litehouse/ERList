@@ -1,13 +1,26 @@
 <h1>The Essential List</h1>
+<%= @books.count %> books in the List
+<br/>
 
-<%= will_paginate @books %>
 
-<table class="books">
-	<%= render @books %>
-</table>
+<% unless @books.empty? %>
 
-<%= will_paginate  @books %>
+	<%= will_paginate @books %>
 
+	<table class="sortable">
+		<tr>
+		    <th class="sorttable_nosort">Image</th>
+			<th class="sorttable_alpha">Title</th>
+			<th class="sorttable_numeric">Author</th>
+			<th class="sorttable_numeric">Votes</th>
+		    <th class="sorttable_numeric">Comments</th>
+		</tr>
+		<%= render @books %>
+	</table>
+
+	<%= will_paginate  @books %>
+
+<% end %>
 <% if signed_in? %>
   <%= link_to "Add a new book!", new_book_path, :class => "add_book_button round" %>
 <% end %>

@@ -173,9 +173,9 @@ div.field, div.actions {
 
 .field_with_errors {
     margin-top: 10px;
-    pading: 2px;
+    padding: 2px;
     background-color: red;
-    display: table;
+    
 }
 
 
@@ -184,17 +184,19 @@ div.field, div.actions {
 }
 
 #error_explanation {
+    margin-left: auto;
+    margin-right: auto;
     width: 400px;
     border: 2px solid red;
-    pading: 7px;
+    padding: 7px;
     padding-bottom: 12px;
     margin-bottom: 20px;
     background-color: #f0f0f0;
+    text-align: left;
 }
 
 #error_explanantion h2 {
-    text-align: left;
-    fon-weight: bold;
+    font-weight: bold;
     padding: 5px 5px 5px 15px;
     font-size: 12px;
     margin: -7px;
@@ -220,7 +222,7 @@ ul.users {
 }
 
 .users li {
-    list-syle: none;
+    list-style: none;
 }
 
 /* Microposts */
@@ -294,4 +296,13 @@ table.comments tr td.comment span.timestamp {
     position:absolute;
     right:15px;
     top:100px;
+}
+
+/* Sortable tables */
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
 }

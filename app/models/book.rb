@@ -15,8 +15,30 @@
 #
 
 class Book < ActiveRecord::Base
+
+    
+    ISBN10_REGEX = /^(?:\d[\ |-]?){9}[\d|X]$/
+    ISBN13_REGEX = /^(?:\d[\ |-]?){13}$/
+    
+    VALID_ISBNS = [ISBN10_REGEX,ISBN13_REGEX]
     
     attr_accessible :title, :author, :isbn, :publisher, :image_url, :creator_id
+    
+    validates :title,    :presence => true
+    validates :author,   :presence   => true
+    
+    
+   
+    validates :isbn,     :format     => { 
+                                :with =>  Regexp.new(VALID_ISBNS.join('|')),
+                                :message => 'invalid, only ISBN10 and ISBN13 allowed'},
+                                :uniqueness => true
+
+    validates :image_url, :format => {
+        :with   =>  %r{\.(gif|jpg|png)$}i,
+        :message => 'must be a valid url for gif, jpg, or png image'
+    }
+
     
     has_many :votes, :foreign_key => "voted_id",
                     :dependent => :destroy
@@ -32,5 +54,6 @@ class Book < ActiveRecord::Base
     def book_feed
         comments
     end
+    
     
 end
