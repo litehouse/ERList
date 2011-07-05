@@ -7,7 +7,8 @@ class BooksController < ApplicationController
 
   def index
       @title = "All books"
-      @books = Book.paginate(:page => params[:page], :order => 'title ASC') 
+      @per_page = params[:per_page] || Book.per_page || 15
+      @books = Book.paginate(:per_page => @per_page, :page => params[:page], :order => 'title ASC')
   end
 
   def show

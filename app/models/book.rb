@@ -55,6 +55,8 @@ class Book < ActiveRecord::Base
         comments
     end
     
-    
+    def self.per_page
+    10
+    end
     
 end
