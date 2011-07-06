@@ -56,7 +56,7 @@ class Book < ActiveRecord::Base
     end
     
     def self.per_page
-    10
+        10
     end
     
 end

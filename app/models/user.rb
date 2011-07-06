@@ -112,7 +112,9 @@ class User < ActiveRecord::Base
         end
     end
 
-
+    def self.per_page
+        10
+    end
 
     
     private

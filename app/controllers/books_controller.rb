@@ -3,6 +3,7 @@ class BooksController < ApplicationController
     
   def new
       @book = Book.new
+      @title = "New book"
   end
 
   def index
@@ -12,21 +13,45 @@ class BooksController < ApplicationController
   end
 
   def show
-      @book = Book.find(params[:id])
-      @title = @book.title
-      @book_feed_items = @book.book_feed.paginate(:page => params[:page])
-      if signed_in?
-          @vote = Vote.new
-          @comment = Comment.new
-      end
+      
+      begin
+        @book = Book.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        logger.error "Attempt to acess invalid book #{params[:id]}"
+        redirect_to books_path, :notice => 'Invalid book'
+      else
+        @title = @book.title
+        @book_feed_items = @book.book_feed.paginate(:page => params[:page])  
+      end  
+      
+      #      @book = Book.find(params[:id])
+      # if @book 
+      #    @title = @book.title
+      #    @book_feed_items = @book.book_feed.paginate(:page => params[:page])
+      #    if signed_in?
+      #        # @vote = Vote.new
+      #        #@comment = Comment.new
+      #    end
+      # else
+      #    flash[:notice] = "Book not found"
+      #    redirect_to books_path
+      # end
   end
      
     
   def create
+      # @book = Book.new(params[:book])
+      # @book.creator_id = current_user.id
       @book = Book.new(params[:book])
       @book.creator_id = current_user.id
-      @book.title[0] = @book.title[0].capitalize
-      @book.author[0] = @book.author[0].capitalize
+      unless @book.title.nil?
+        @book.title = @book.title.strip
+        @book.title[0] = @book.title[0].capitalize 
+      end
+      unless @book.author.nil?
+        @book.author = @book.author.strip    
+        @book.author[0] = @book.author[0].capitalize 
+      end
       if @book.save
         flash[:success] = "Book added"
         redirect_to books_path(@book)

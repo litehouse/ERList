@@ -1,26 +1,20 @@
 <tr>
-	<td class="book_image">
+	<td class="book-image">
 	  <%= link_to image_tag(book.image_url, :class => 'list_image', :size => '50x50'), book %>
 	</td>
-	<td class="title">
+	<td class="book-title">
 	    <%= link_to book.title, book %>
 	</td>
-	<td class="author">
+	<td class="book-author">
 		<%= book.author %>
 	</td>
-	<td class="book_votes">
+	<td class="book-votes">
 		<%= book.votes.count %> votes
 	</td>
-	<td class="book_comments">
+	<td class="book-comments">
 		<%= book.comments.count %> comments
 	</td>
-	<% if signed_in? %>
-	    <% if ( current_user.admin? ) or (current_user.id == book.creator_id ) %>
-	      <td>
-			 <%= link_to( "delete", book, :method => :delete, :confirm => "Are you #{book.creator_id} / #{current_user.id} sure?", :title => "Delete #{book.title}") %>
-		  </td>
-		<% end %>
-	  <% end %>
+	
 </tr>
 
 

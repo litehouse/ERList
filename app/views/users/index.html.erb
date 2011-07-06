@@ -1,9 +1,19 @@
 <h1>All readers</h1>
-<%= User.all.count %> users have registered
-<%= will_paginate %>
+<%= User.all.count %> readers have registered, showing 
+<%= select_tag :per_page, options_for_select([10,15,20,30,9999], params[:per_page].to_i),
+               :onchange => "if(this.value){window.location='?per_page='+this.value;}" %> readers per page.
+<br/>
+<br/>
+<%= will_paginate @users %>
 
-<table class="users">
+<table class="sortable">
+	<tr>
+		<th class="sortable_nosort"></th>
+		<th class="sortable_alpha">Name</th>
+		<th class="sortable_numeric">Votes</th>
+		<th class="sortable_numeric">Comments</th>
+	</tr>
 	<%= render @users %>
 </table>
 
-<%= will_paginate %>
+<%= will_paginate @users %>

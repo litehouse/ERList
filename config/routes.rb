@@ -3,11 +3,12 @@ ERList::Application.routes.draw do
     
     resources :supports, :only => [:new, :create]
 
-    get "comments/create"
     
-    get "comments/destroy"
+    #get "comments/create"
     
-    #get "books/new"
+    #get "comments/destroy"
+    
+    #get "books/destroy"
     
     #get "books/index"
     
@@ -17,6 +18,8 @@ ERList::Application.routes.draw do
     
     get "relationships/destroy"
     
+    get "comments/destroy"
+    
     get "votes/create"
     
     get "votes/destroy"
@@ -25,6 +28,7 @@ ERList::Application.routes.draw do
     
     
     resources :users do
+        resources :microposts, :only => [:vreate, :destroy]
         member do
             get :following, :followers
             get :votes_for
@@ -35,7 +39,7 @@ ERList::Application.routes.draw do
     resources :microposts, :only => [:create, :destroy]
     resources :comments, :only => [:create, :destroy]
     resources :relationships, :only => [:create, :destroy]
-    
+        
     resources :books do
         member do
             get :votes_from

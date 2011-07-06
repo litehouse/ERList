@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     
   def index
       @title = "All users"
-      @users = User.paginate(:page => params[:page],:order => 'name ASC') 
+      @per_page = params[:per_page] || User.per_page || 15
+      @users = User.paginate(:per_page => @per_page, :page => params[:page],:order => 'name ASC')
+      
   end
     
   def new
@@ -16,9 +18,20 @@ class UsersController < ApplicationController
   end
     
   def show
-      @user = User.find(params[:id])
-      @microposts = @user.microposts.paginate(:page => params[:page])
-      @title = @user.name
+      
+      begin
+          @user = User.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+          logger.error "Attempt to acess invalid user #{params[:id]}"
+          redirect_to users_path, :notice => 'Invalid user'
+      else
+          @title = @user.name
+          @microposts = @user.microposts.paginate(:page => params[:page])  
+      end  
+      
+      #@user = User.find(params[:id])
+      #@microposts = @user.microposts.paginate(:page => params[:page])
+      #@title = @user.name
   end  
     
   def create
@@ -48,14 +61,14 @@ class UsersController < ApplicationController
   end
     
   def destroy
+      @user = User.find(params[:id])
       begin
-      User.find(params[:id]).destroy
+          @user.destroy
+          flash[:success] = "#{@user.name} deleted"
+          redirect_to users_path
       rescue Exception => e
-        flash[:notice] = e.message
-        redirect_to users_path
-      else
-        flash[:success] = "User destroyed"
-        redirect_to users_path
+          flash[:notice] = e.message
+          redirect_to users_path
       end
   end
     

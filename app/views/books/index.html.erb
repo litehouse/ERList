@@ -1,5 +1,7 @@
 <h1>The Essential List</h1>
+
 <%= Book.all.count %> books in the List, showing 
+
 <%= select_tag :per_page, options_for_select([10,15,20,30,10000], params[:per_page].to_i),
                :onchange => "if(this.value){window.location='?per_page='+this.value;}" %> books per page.
 <br/>
@@ -11,7 +13,7 @@
 
 	<table class="sortable">
 		<tr>
-		    <th class="sorttable_nosort">Image</th>
+		    <th class="sortable_nosort">Image</th>
 			<th class="sortable_alpha">Title</th>
 			<th class="sortable_alpha">Author</th>
 			<th class="sortable_numeric">Votes</th>

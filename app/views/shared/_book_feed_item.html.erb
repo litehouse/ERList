@@ -11,9 +11,7 @@
 	</td>
 	<% if current_user?(book_feed_item.user) %>
 	<td>
-		<%= link_to "delete", book_feed_item, :method => :delete,
-											:confirm => "Are you sure?",
-											:title => book_feed_item.comment %>
+		<%= button_to "Delete", book_feed_item, :method => :delete, :confirm => "Are you sure", :title => "Delete comment" %>
 	</td>
 	<% end %>
 </tr>

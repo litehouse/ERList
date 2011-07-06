@@ -11,19 +11,13 @@
 				<li><strong>ISBN</strong>  <%= @book.isbn %></li>
 			</ul>
 			<% if signed_in? %>
-			  <% if ( current_user.admin? ) or (current_user.id == @book.creator_id ) %>
-			    <br/>
-			    <%= button_to "Delete this book", book_path(@book), :method => :delete, :confirm => "Are you sure", :title => "Delete book" %>
-			  <% end %>
-			  <br/>
 			  <strong>Book added by: </strong> <%= link_to @book.user.name, @book.user %>
 			  <% if ( current_user.admin? ) or (current_user.id == @book.creator_id ) %>
 			    <br/>
-				<%= link_to "Edit this book", edit_book_path(@book)%> 
-			   <% end %>
-				<br/>
-				<strong>Add a comment for this book:</strong>
-			   <%= render 'shared/comment_form' %>
+			    <%= link_to "Edit book details", edit_book_path(@book) %> 
+				<%= button_to "Delete this book", book_path(@book), :method => :delete, :confirm => "Are you sure", :title => "Delete book" %>
+			  <% end %>
+			  <%= render 'shared/comment_form' %>
 			<% end %>
 			<%= render 'shared/book_feed' %>
 		</td>
