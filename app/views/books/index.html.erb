@@ -2,7 +2,7 @@
 
 <%= Book.all.count %> books in the List, showing 
 
-<%= select_tag :per_page, options_for_select([10,15,20,30,10000], params[:per_page].to_i),
+<%= select_tag :per_page, options_for_select([10,15,20,30,9999], params[:per_page].to_i),
                :onchange => "if(this.value){window.location='?per_page='+this.value;}" %> books per page.
 <br/>
 <br/>
