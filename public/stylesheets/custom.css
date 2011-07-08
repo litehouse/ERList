@@ -305,4 +305,30 @@ table.sortable thead {
     color:#666666;
     font-weight: bold;
     cursor: default;
+    text-align: center;
+}
+
+table.microposts tr td.micropost span.timestamp {
+    display: block;
+    font-size: 85%;
+    color: #666;
+}
+
+table.sortable tr td.book-votes {
+    text-align: center;
+    font-size: 80%;
+}
+
+table.sortable tr td.book-comments {
+    text-align: center;
+    font-size: 80%;
+}
+
+table.sortable tr td.user-comments {
+    text-align: center;
+    font-size: 80%;
+}
+table.sortable tr td.user-votes {
+    text-align: center;
+    font-size: 80%;
 }

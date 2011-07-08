@@ -70,6 +70,7 @@ class BooksController < ApplicationController
 
   def edit
       @book = Book.find(params[:id])
+      @book.title = @book.title.strip
       @book.title[0] = @book.title[0].capitalize
       @book.author[0] = @book.author[0].capitalize
       @title = "Edit Book"
