@@ -1,0 +1,22 @@
+<% @users.each do |user| %>
+  <tr>
+	<td class="user-name">
+	    <%= link_to user.name, user %>
+	</td>
+	<td class="user-email">
+		<%= mail_to user.email %>
+	</td>
+	<td class="user-votes">
+		<%= user.votes.count %>
+	</td>
+	<td class="user-comments">
+		<%= user.comments.count %>
+	</td>
+	<td class="Date-added">
+	  <%= user.created_at %>
+	</td>
+  </tr>
+<% end %>
+
+
+

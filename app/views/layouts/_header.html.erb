@@ -6,10 +6,10 @@
 			<li><%= link_to "Home",  root_path %></li>
 			<li><%= link_to "The Essential List", books_path %></li>
 			<% if signed_in? %>
-			<li><%= link_to "Readers",  users_path %></li>
-			<li><%= link_to "Sign out",  signout_path, :method => :delete %></li>
+			  <li><%= link_to "Readers",  users_path %></li>
+			  <li><%= link_to "Sign out",  signout_path, :method => :delete %></li>
 			<% else %>
-			<li><%= link_to "Sign in",  signin_path %></li>
+			  <li><%= link_to "Sign in",  signin_path %></li>
 			<% end %>
 			<li><%= link_to "Help",  help_path %></li>
 		</ul>
@@ -21,7 +21,8 @@
 	  <div>
 		Welcome <%= link_to current_user.name, current_user %>
 		<% if current_user.admin? %>
-		 /admin
+		  /<%= link_to "Book Reporting",  report_book_path %>
+		  /<%= link_to "User Reporting",  report_user_path %>
 		<% end %>
 	  </div>
 	<% end %>

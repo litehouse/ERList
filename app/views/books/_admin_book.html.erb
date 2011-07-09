@@ -1,7 +1,5 @@
-<tr>
-	<td class="book-image">
-	  <%= link_to image_tag(book.image_url, :class => 'list_image', :size => '50x50'), book %>
-	</td>
+<% @books.each do |book| %>
+  <tr>
 	<td class="book-title">
 	    <%= link_to book.title, book %>
 	</td>
@@ -14,7 +12,14 @@
 	<td class="book-comments">
 		<%= book.comments.count %>
 	</td>
-</tr>
+	<td class="book-added-by">
+		<%= book.user.name %>
+	</td>
+	<td class="Date-added">
+	  <%= book.created_at %>
+	</td>
+  </tr>
+<% end %>
 
 
 

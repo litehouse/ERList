@@ -1,0 +1,25 @@
+<h1>The Great War's Essential Reading List'</h1>
+<h2>Admin User Reporting</h2>
+<br/>
+<p>Reporting Date: <%= Time.now %><p>
+<p>Total No. of books in the List: <%= Book.all.count %></p>
+<p>Total No. of users in the list: <%= User.all.count %></p>
+<p>Total No. of votes casted:      <%= Vote.all.count %></p> 
+<p>Total No. of comments made:     <%= Comment.all.count %></p>
+<br/>
+<%= select_tag :per_page, options_for_select([10,15,20,30,9999], params[:per_page].to_i),
+               :onchange => "if(this.value){window.location='?per_page='+this.value;}" %> books per page.
+<br/>
+<% unless @users.empty? %>
+	<%= will_paginate @users %>
+	<table class="sortable">
+		<tr>
+			<th class="sortable_alpha">Name</th>
+			<th class="sortable_alpha">email</th>
+			<th class="sortable_numeric">Votes</th>
+			<th class="sortable_numeric">Comments</th>
+			<th class="sortable_alpha">Date added</th>
+		</tr>
+		<%= render 'admin_user' %>
+	</table>
+<% end %>

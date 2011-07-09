@@ -59,6 +59,8 @@ ERList::Application.routes.draw do
     match '/contact',   :to => 'supports#new'
     match '/about',     :to => 'pages#about'
     match '/help',      :to => 'pages#help'
+    match '/report_book', :to => 'books#report_book'
+    match '/report_user', :to => 'users#report_user' 
     
     #get "pages/home"
     

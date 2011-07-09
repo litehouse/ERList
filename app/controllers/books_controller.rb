@@ -11,6 +11,12 @@ class BooksController < ApplicationController
       @per_page = params[:per_page] || Book.per_page || 15
       @books = Book.paginate(:per_page => @per_page, :page => params[:page], :order => 'title ASC')
   end
+    
+  def report_book
+      @titel = "Admin books"
+      @per_page = params[:per_page] || Book.per_page || 15
+      @books = Book.paginate(:per_page => @per_page, :page => params[:page], :order => 'created_at ASC')
+  end
 
   def show
       

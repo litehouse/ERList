@@ -26,13 +26,20 @@
 			<strong>Microposts </strong> <%= @user.microposts.count %>
 			<%= render 'shared/stats' %>
 			<% @books = @user.books %>
-			<strong>Books added </strong> <%= @user.books.count %><br/>
 			<% unless @books.empty? %>
+			  <strong>Books added </strong> <%= @user.books.count %><br/>
 			  <% @books.each do |book| %>
 				<%= link_to image_tag(book.image_url, :class => 'list_image', :size => '30x30'), book %>
 			  <% end %>
 			<% end %>
 			<br/>
+			<% @books_voted_for = @user.votes_for %>
+			<% unless @books_voted_for.empty? %>
+			  <strong>Votes casted </strong> <%= @user.votes.count %><br/>
+			  <% @books_voted_for.each do |book| %>
+			    <%= link_to image_tag(book.image_url, :class => 'list_image', :size => '30x30'), book %>
+			  <% end %>
+			<% end %>
 			<br/>
 			<strong>Comments made </strong> <%= @user.comments.count %><br/>
 			<br/>

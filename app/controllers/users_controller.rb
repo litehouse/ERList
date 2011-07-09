@@ -12,6 +12,12 @@ class UsersController < ApplicationController
       
   end
     
+  def report_user
+      @titel = "Admin users"
+      @per_page = params[:per_page] || Book.per_page || 15
+      @users = User.paginate(:per_page => @per_page, :page => params[:page], :order => 'created_at ASC')
+  end
+    
   def new
       @user = User.new
       @title = "Sign up"
