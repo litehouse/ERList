@@ -3,31 +3,17 @@
 }
 
 body {
-	background: #fff;
-    color: #ccc;
-    font-family: helvetica, arial, sans-serif;
+	background: #CEF6D8
     
 }
 
-
-#bggraphic {
-  background: url('public/images/trenches-British.jpg')  no-repeat;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  opacity:0.25;
-  z-index: 100;
-}
-
-
 header {
-  padding-top: 20px;
-  background: #000;
+	padding-top: 20px;
 }
 
 header_img {
 	padding: 1em;
-	background: #000;
+	background: #fff;
 }
 
 section {
@@ -67,7 +53,6 @@ a:visited {
 nav {
 	float:right;
 }
-
 nav {
 	background-color: white;
 	padding: 0 0.7em;
@@ -140,7 +125,6 @@ a.add_book_button {
 /* Footer */
 
 footer {
-  background-color: #000;
 	text-align: center;
 	margin-top: 10px;
 	width: 710px;
